@@ -1,3 +1,4 @@
+package code;
 import java.util.date;
 public class Assignment{
     private Subject related_subject;
