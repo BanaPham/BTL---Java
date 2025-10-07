@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 package code;
 
@@ -20,5 +21,10 @@ public class Event {
     public Date getTime() {
         return time;
     }
+=======
+package code;
+
+public class Event {
+>>>>>>> a04ef63d9e91e6bd1e58265397569e4e77b450a9
     
 }
