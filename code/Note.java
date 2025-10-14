@@ -44,4 +44,3 @@ public class Note {
         this.creationDate = creationDate;
     }
 }
-

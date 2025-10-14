@@ -13,4 +13,4 @@ public class Event {
     public Date getTime() {
         return time;
     }
-
+}
