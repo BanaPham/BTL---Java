@@ -3,18 +3,15 @@ import java.util.Date;
 public class Assignment
 {
     private Subject related_subject;
-    private String name;
+    private String name, assignment_id;
     private Date deadline;
     private Status status;
-    public enum Status
-    {
-        Complete,
-        Pending
-    }
-    public Assignment(Subject related_subject, String name, Date deadline, Status status)
+    // Assignment    
+    public Assignment(Subject related_subject, String name, String AssignmentId, Date deadline, Status status)
     {
         this.related_subject = related_subject;
         this.name = name;
+        this.assignment_id = AssignmentId;
         this.deadline = deadline;
         this.status = status;
     }
@@ -22,9 +19,18 @@ public class Assignment
     {
         this.related_subject = null;
         this.name = "";
+        this.assignment_id = "";
         this.deadline = null;
         this.status = Status.Pending;
     }
+    // assignment_id
+    public String getAssignmentId() { 
+        return assignment_id;
+    }
+    public void setAssignmentId(String assignment_id) {
+        this.assignment_id = assignment_id;
+    }
+    // related_subject
     public Subject getRelatedSubject()
     {
         return related_subject;
@@ -33,6 +39,14 @@ public class Assignment
     {
         this.related_subject = related_subject;
     }
+    public String getSubjectName()
+    {
+        if (related_subject != null)
+            return related_subject.getName();
+        else
+            return "(No Subject)";
+    }
+    // name
     public String getName()
     {
         return name;
@@ -41,6 +55,7 @@ public class Assignment
     {
         this.name = name;
     }
+    // deadline
     public Date getDeadline()
     {
         return deadline;
@@ -49,6 +64,12 @@ public class Assignment
     {
         this.deadline = deadline;
     }
+    // status
+    public enum Status
+    {
+        Complete,
+        Pending
+    }
     public Status getStatus()
     {
         return status;
@@ -56,12 +77,5 @@ public class Assignment
     public void setStatus(Status status)
     {
         this.status = status;
-    }
-    public String getSubjectName()
-    {
-        if (related_subject != null)
-            return related_subject.getName();
-        else
-            return "(No Subject)";
     }
 }

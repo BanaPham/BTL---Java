@@ -20,10 +20,10 @@ public class Student {
         this.schedules = new ArrayList<>();
     }
     // student_id
-    public String getStudent_id() {
+    public String getStudentId() {
         return student_id;
     }
-    public String setStudent_id(String student_id) {
+    public String setStudentId(String student_id) {
         return this.student_id = student_id;
     }
     // name

@@ -8,6 +8,7 @@ public class Subject
     private String instructor;
     private List<Note> notes;
     private List<Assignment> assignments;
+    // Subject
     public Subject()
     {
         this.subject_id = "";
@@ -24,6 +25,7 @@ public class Subject
         this.notes = new ArrayList<>();
         this.assignments = new ArrayList<>();
     }
+    // subject_id
     public String getSubjectId()
     {
         return subject_id;
@@ -32,6 +34,7 @@ public class Subject
     {
         this.subject_id = subject_id;
     }
+    // name
     public String getName()
     {
         return name;
@@ -40,6 +43,7 @@ public class Subject
     {
         this.name = name;
     }
+    // instructor
     public String getInstructor()
     {
         return instructor;
@@ -48,6 +52,7 @@ public class Subject
     {
         this.instructor = instructor;
     }
+    // Note 
     public List<Note> getNotes()
     {
         return notes;
@@ -55,14 +60,6 @@ public class Subject
     public void setNotes(List<Note> notes)
     {
         this.notes = notes;
-    }
-    public List<Assignment> getAssignments()
-    {
-        return assignments;
-    }
-    public void setAssignments(List<Assignment> assignments)
-    {
-        this.assignments = assignments;
     }
     public void addNote(Note note)
     {
@@ -73,6 +70,15 @@ public class Subject
     {
         if(this.notes.contains(note))
             this.notes.remove(note);
+    }
+    // Assignment
+    public List<Assignment> getAssignments()
+    {
+        return assignments;
+    }
+    public void setAssignments(List<Assignment> assignments)
+    {
+        this.assignments = assignments;
     }
     public void addAssignment(Assignment assignment)
     {

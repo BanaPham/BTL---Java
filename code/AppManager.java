@@ -2,7 +2,7 @@ package code;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Date;
 public class AppManager {
     private List<Student> students;
     private List<Subject> subjects;
@@ -69,21 +69,21 @@ public class AppManager {
         } 
     }
     // Thêm bài tập vào môn học của sinh viên
-    public void addAssignmentToSubject(String student_id, String subject_id, String assignment_id, String assignment_name) {
+    public void addAssignmentToSubject(String student_id, String subject_id, String assignment_id, String assignment_name, Date deadline, Assignment.Status status) {
         Student student = findStudentById(student_id);
         Subject subject = findSubjectById(subject_id); 
         
         if (student != null && subject != null) {
-            Assignment newAssignment = new Assignment(assignment_id, assignment_name, subject);
+            Assignment newAssignment = new Assignment(subject, assignment_name, assignment_id, deadline, status);
             subject.addAssignment(newAssignment); 
             student.addAssignment(newAssignment);
         }
     }
-    // Tìm kiếm bài tập theo tên
-    public Assignment findAssignmentByName(String assignmentName) {
+    // Tìm kiếm bài tập theo ID
+    public Assignment findAssignmentById(String assignment_id) {
         for (Subject subject : subjects) {
             for (Assignment assignment : subject.getAssignments()) {
-                if (assignment.getName().equalsIgnoreCase(assignmentName)) {
+                if (assignment.getAssignmentId().equalsIgnoreCase(assignment_id)) {
                     return assignment;
                 }
             }
@@ -91,17 +91,17 @@ public class AppManager {
         return null;
     }
     // Đánh dấu bài tập đã hoàn thành
-    public void markAsCompleted(String assignmentName)
+    public void markAsCompleted(String assignment_id)
     {
-        Assignment assignment = findAssignmentByName(assignmentName);
+        Assignment assignment = findAssignmentById(assignment_id);
         if (assignment != null) {
-            assignment.setStatus(AssignmentStatus.COMPLETED);
+            assignment.setStatus(Assignment.Status.Complete);
         }
     }
     // Xóa bài tập khỏi môn học và sinh viên
-    public void removeAssignment(String student_id, String assignment_name) {
+    public void removeAssignment(String student_id, String assignment_id) {
         Student student = findStudentById(student_id);
-        Assignment assignmentToRemove = findAssignmentByName(assignment_name);
+        Assignment assignmentToRemove = findAssignmentById(assignment_id);
 
         if (student != null && assignmentToRemove != null) {
             Subject relatedSubject = assignmentToRemove.getRelatedSubject();
@@ -113,20 +113,20 @@ public class AppManager {
         } 
     }
     // Thêm ghi chú vào môn học của sinh viên
-     public void addNoteToSubject(String student_id, String subject_id, String note_id, String title, String content) {
+     public void addNoteToSubject(String student_id, String subject_id, String note_id, String title, String content, Date creationDate) {
         Student student = findStudentById(student_id);
         Subject subject = findSubjectById(subject_id); 
         
         if (student != null && subject != null) {
-            Note newNote = new Note(note_id, title, content, subject);
+            Note newNote = new Note(note_id, subject, title, content, creationDate);
             subject.addNote(newNote);
         }
     }
-    // Tìm kiếm ghi chú theo tiêu đề
-    public Note findNoteByTitle(String title) {
+    // Tìm kiếm ghi chú theo ID
+    public Note findNoteByID(String note_id) {
         for (Subject subject : subjects) {
             for (Note note : subject.getNotes()) {
-                if (note.getTitle().equalsIgnoreCase(title)) {
+                if (note.getNoteId().equalsIgnoreCase(note_id)) {
                     return note;
                 }
             }
@@ -134,11 +134,11 @@ public class AppManager {
         return null;
     }
     // Xóa ghi chú khỏi môn học
-    public void removeNoteFromSubject(String subject_id, String note_title) {
-        Note noteToRemove = findNoteByTitle(note_title);
+    public void removeNoteFromSubject(String subject_id, String note_id) {
+        Note noteToRemove = findNoteByID(note_id);
 
         if (noteToRemove != null) {
-            Subject relatedSubject = noteToRemove.getRelatedSubject();
+            Subject relatedSubject = noteToRemove.getRelated_subject();
             if (relatedSubject != null) {
                 relatedSubject.removeNote(noteToRemove);
             }
