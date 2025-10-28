@@ -7,7 +7,7 @@ public class Schedule extends Object{
     // Schedule
     public Schedule(String id, Subject related_subject, String name) {
         super(id, name);
-        setRelated_schedule(related_schedule);
+        setRelated_subject(related_subject);
     }  
     // related_subject
     public Subject getRelated_subject() {
