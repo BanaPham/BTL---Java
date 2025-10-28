@@ -8,7 +8,8 @@ public class Subject extends Object
     private List<Assignment> assignments;
     // Subject
 
-    public Subject(String id, String name, String subject_id, String name1, String instructor, List<Note> notes, List<Assignment> assignments) {
+
+    public Subject(String id, String name, String instructor, List<Note> notes, List<Assignment> assignments) {
         super(id, name);
         this.instructor = instructor;
         this.notes = notes;
