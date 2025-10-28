@@ -1,35 +1,19 @@
 package code;
 import java.util.Date;
-public class Assignment
+public class Assignment extends Object
 {
     private Subject related_subject;
-    private String name, assignment_id;
     private Date deadline;
     private Status status;
     // Assignment    
-    public Assignment(Subject related_subject, String name, String AssignmentId, Date deadline, Status status)
-    {
+
+    public Assignment(String id, String name, Subject related_subject, Date deadline, Status status) {
+        super(id, name);
         this.related_subject = related_subject;
-        this.name = name;
-        this.assignment_id = AssignmentId;
         this.deadline = deadline;
         this.status = status;
     }
-    public Assignment()
-    {
-        this.related_subject = null;
-        this.name = "";
-        this.assignment_id = "";
-        this.deadline = null;
-        this.status = Status.Pending;
-    }
-    // assignment_id
-    public String getAssignmentId() { 
-        return assignment_id;
-    }
-    public void setAssignmentId(String assignment_id) {
-        this.assignment_id = assignment_id;
-    }
+
     // related_subject
     public Subject getRelatedSubject()
     {
@@ -37,6 +21,7 @@ public class Assignment
     }
     public void setRelatedSubject(Subject related_subject)
     {
+
         this.related_subject = related_subject;
     }
     public String getSubjectName()
@@ -45,15 +30,6 @@ public class Assignment
             return related_subject.getName();
         else
             return "(No Subject)";
-    }
-    // name
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
     }
     // deadline
     public Date getDeadline()
@@ -76,6 +52,7 @@ public class Assignment
     }
     public void setStatus(Status status)
     {
-        this.status = status;
+        if (status != null)
+            this.status = status;
     }
 }
