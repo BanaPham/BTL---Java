@@ -7,11 +7,12 @@ public class Assignment extends Object
     private Status status;
     // Assignment    
 
-    public Assignment(String id, String name, Subject related_subject, Date deadline, Status status) {
+
+    public Assignment(Subject related_subject,String name, String id, Date deadline, Status status) {
         super(id, name);
-        this.related_subject = related_subject;
-        this.deadline = deadline;
-        this.status = status;
+        setRelatedSubject(related_subject);
+        setDeadline(deadline);
+        setStatus(status);
     }
 
     // related_subject
