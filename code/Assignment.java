@@ -1,59 +1,66 @@
 package code;
-import java.util.Date;
-public class Assignment extends Object
+import java.util.ArrayList;
+import java.util.List;
+public class Subject extends Object
 {
-    private Subject related_subject;
-    private Date deadline;
-    private Status status;
-    // Assignment    
+    private String instructor;
+    private List<Note> notes;
+    private List<Assignment> assignments;
+    // Subject
 
 
-    public Assignment(Subject related_subject,String name, String id, Date deadline, Status status) {
+    public Subject(String id, String name, String instructors) {
         super(id, name);
-        setRelatedSubject(related_subject);
-        setDeadline(deadline);
-        setStatus(status);
+        setInstructor(instructors);
     }
 
-    // related_subject
-    public Subject getRelatedSubject()
+    // instructor
+    public String getInstructor()
     {
-        return related_subject;
+        return instructor;
     }
-    public void setRelatedSubject(Subject related_subject)
+    public void setInstructor(String instructor)
     {
-
-        this.related_subject = related_subject;
+        this.instructor = instructor;
     }
-    public String getSubjectName()
+    // Note 
+    public List<Note> getNotes()
     {
-        if (related_subject != null)
-            return related_subject.getName();
-        else
-            return "(No Subject)";
+        return notes;
     }
-    // deadline
-    public Date getDeadline()
+    public void setNotes(List<Note> notes)
     {
-        return deadline;
+        if (this.notes != null)
+            this.notes = notes;
     }
-    public void setDeadline(Date deadline)
+    public void addNote(Note note)
     {
-        this.deadline = deadline;
+        if(!this.notes.contains(note))
+            this.notes.add(note);
     }
-    // status
-    public enum Status
+    public void removeNote(Note note)
     {
-        Complete,
-        Pending
+        if(this.notes.contains(note))
+            this.notes.remove(note);
     }
-    public Status getStatus()
+    // Assignment
+    public List<Assignment> getAssignments()
     {
-        return status;
+        return assignments;
     }
-    public void setStatus(Status status)
+    public void setAssignments(List<Assignment> assignments)
     {
-        if (status != null)
-            this.status = status;
+        if (assignments != null)
+            this.assignments = assignments;
+    }
+    public void addAssignment(Assignment assignment)
+    {
+        if(!this.assignments.contains(assignment))
+            this.assignments.add(assignment);
+    }
+    public void removeAssignment(Assignment assignment)
+    {
+        if(this.assignments.contains(assignment))
+            this.assignments.remove(assignment);
     }
 }
