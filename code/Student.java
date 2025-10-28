@@ -3,15 +3,14 @@ package code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
-    private String student_id, name, class_id, email, password;
+public class Student extends Object{
+    private String class_id, email, password;
     private List<Subject> subjects;
     private List<Assignment> assignments;
     private List<Schedule> schedules;
     // Student
-    public Student(String student_id, String name, String class_id, String email, String password) {
-        this.student_id = student_id;
-        this.name = name;
+    public Student(String id, String name, String class_id, String email, String password) {
+        super(class_id, name);
         this.class_id = class_id;
         this.email = email;
         this.password = password;
@@ -19,40 +18,21 @@ public class Student {
         this.assignments = new ArrayList<>();
         this.schedules = new ArrayList<>();
     }
-    // student_id
-    public String getStudentId() {
-        return student_id;
-    }
-    public String setStudentId(String student_id) {
-        return this.student_id = student_id;
-    }
-    // name
-    public String getName() {
-        return name;
-    }
-    public String setName(String name) {
-        return this.name = name;
-    }
     // class_id
     public String getClass_id() {
         return class_id;
     }
-    public String setClass_id(String class_id) {
-        return this.class_id = class_id;
+    public void setClass_id(String class_id) {
+        if(!class_id.equals(""))
+            this.class_id = class_id;
     }
     // email
     public String getEmail() {
         return email;
     }
-    public String setEmail(String email) {
-        return this.email = email;
-    }
-    // password
-    public String getPassword() {
-        return password;
-    }
-    public String setPassword(String password) {
-        return this.password = password;
+    public void setEmail(String email) {
+        if(!email.equals(""))
+            this.email = email;
     }
     // subjects
     public void addSubject(Subject subject) {
