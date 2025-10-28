@@ -1,48 +1,20 @@
 package code;
 import java.util.ArrayList;
 import java.util.List;
-public class Subject
+public class Subject extends Object
 {
-    private String subject_id;
-    private String name;
     private String instructor;
     private List<Note> notes;
     private List<Assignment> assignments;
     // Subject
-    public Subject()
-    {
-        this.subject_id = "";
-        this.name = "";
-        this.instructor = "";
-        this.notes = new ArrayList<>();
-        this.assignments = new ArrayList<>();
-    }
-    public Subject(String subject_id, String name, String instructor)
-    {
-        this.subject_id = subject_id;
-        this.name = name;
+
+    public Subject(String id, String name, String subject_id, String name1, String instructor, List<Note> notes, List<Assignment> assignments) {
+        super(id, name);
         this.instructor = instructor;
-        this.notes = new ArrayList<>();
-        this.assignments = new ArrayList<>();
+        this.notes = notes;
+        this.assignments = assignments;
     }
-    // subject_id
-    public String getSubjectId()
-    {
-        return subject_id;
-    }
-    public void setSubjectId(String subject_id)
-    {
-        this.subject_id = subject_id;
-    }
-    // name
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+
     // instructor
     public String getInstructor()
     {
@@ -59,7 +31,8 @@ public class Subject
     }
     public void setNotes(List<Note> notes)
     {
-        this.notes = notes;
+        if (this.notes != null)
+            this.notes = notes;
     }
     public void addNote(Note note)
     {
@@ -78,7 +51,8 @@ public class Subject
     }
     public void setAssignments(List<Assignment> assignments)
     {
-        this.assignments = assignments;
+        if (assignments != null)
+            this.assignments = assignments;
     }
     public void addAssignment(Assignment assignment)
     {
