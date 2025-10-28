@@ -9,11 +9,9 @@ public class Subject extends Object
     // Subject
 
 
-    public Subject(String id, String name, String instructor, List<Note> notes, List<Assignment> assignments) {
+    public Subject(String id, String name, String instructors) {
         super(id, name);
-        this.instructor = instructor;
-        this.notes = notes;
-        this.assignments = assignments;
+        setInstructor(instructors);
     }
 
     // instructor
