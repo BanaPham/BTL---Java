@@ -2,22 +2,12 @@ package code;
 import java.util.List;
 import java.util.ArrayList;
 public class Schedule extends Object{
-    private Subject related_subject;
+    private List<Subject> subjects;
     private List<Event> events;
     // Schedule
-    public Schedule(String id, Subject related_subject, String name) {
+    public Schedule(String id, String name) {
         super(id, name);
-        setRelated_subject(related_subject);
     }  
-    // related_subject
-    public Subject getRelated_subject() {
-        return related_subject;
-    } 
-    public void setRelated_subject(Subject related_subject) {
-        if (related_subject != null) {
-            this.related_subject = related_subject;
-        }
-    } 
     // Event 
     public List<Event> getEvents(){
         return events;
@@ -30,5 +20,18 @@ public class Schedule extends Object{
     public void removeEvent(Event event) {
         if (this.events.contains(event))
             this.events.remove(event);
+    }
+    //  Subject
+    public List<Subject> getSubjects(){
+        return subjects;
+    }
+    public void addSubject(Subject subject){
+        if (!this.subjects.contains(subject)) {
+            subjects.add(subject);
+        }
+    }
+    public void removeSubject(Subject subject) {
+        if (this.subjects.contains(subject))
+            this.subjects.remove(subject);
     }
 }
