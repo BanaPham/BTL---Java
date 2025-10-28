@@ -24,7 +24,7 @@ public class Assignment extends Object
 
         this.related_subject = related_subject;
     }
-    public String getSubjectName()
+    public String getSubjectName(
     {
         if (related_subject != null)
             return related_subject.getName();
