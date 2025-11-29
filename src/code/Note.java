@@ -1,15 +1,32 @@
 package code;
 import java.util.Date;
-public class Note extends Object {
+
+public class Note {
+    static int cnt =1;
+    private String id, name;
     private Subject related_subject;
     private String content;
     private Date creationDate;
     // Note 
-    public Note(String id, Subject related_subject, String name, String content, Date creationDate) {
-        super(id, name);
+    public Note (Subject related_subject, String name, String content, Date creationDate){
+        this.id = String.format("NT%03d", cnt++);
+        setName(name);
         setRelated_subject(related_subject);
         setContent(content);
-        setCreationDate(creationDate);
+        this.creationDate = new Date();
+    }
+    
+    // id
+    public String getId(){
+        return id;
+    }
+    // name
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        if(!name.equals(""))
+            this.name = name;
     }
     // related_subject
     public Subject getRelated_subject() {
@@ -29,18 +46,14 @@ public class Note extends Object {
         this.content = content;
     }
     public void addContent(String newContent) {
+        if(this.content.equals(""))
         this.content = newContent;
     } 
     public void removeContent() {
-        this.content = null;
+        this.content = "";
     }
     // creationDate
     public Date getCreationDate() {
         return creationDate;
-    }
-    public void setCreationDate(Date creationDate) {
-        if (creationDate != null) {
-            this.creationDate = creationDate;
-        }
     }
 }

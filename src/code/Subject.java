@@ -1,20 +1,30 @@
 package code;
-import java.util.ArrayList;
 import java.util.List;
-public class Subject extends Object
-{
-    private String instructor;
+
+public class Subject {
+
+    private String instructor, id, name;
     private List<Note> notes;
     private List<Assignment> assignments;
+    private static int cnt;
     // Subject
-
-    public Subject(String id, String name, String subject_id, String name1, String instructor, List<Note> notes, List<Assignment> assignments) {
-        super(id, name);
-        this.instructor = instructor;
-        this.notes = notes;
-        this.assignments = assignments;
+    public Subject(String name, String instructors) {
+        cnt++;
+        this.id = String.format("SB%03d", cnt);
+        setName(name);
+        setInstructor(instructors);
     }
-
+    public String getId() {
+        return id;
+    }
+    // name
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        if (name != null)
+            this.name = name;
+    }
     // instructor
     public String getInstructor()
     {
@@ -22,9 +32,10 @@ public class Subject extends Object
     }
     public void setInstructor(String instructor)
     {
-        this.instructor = instructor;
+        if (instructor != null)
+            this.instructor = instructor;
     }
-    // Note 
+    // Note
     public List<Note> getNotes()
     {
         return notes;
