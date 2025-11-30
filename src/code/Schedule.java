@@ -1,14 +1,15 @@
 package code;
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.*;
+
 public class Schedule{
-    static int cnt =1;
     private String id, name;
     private List<Subject> subjects;
     private List<Event> events;
     // Schedule
-     public Schedule(String name) {
-        this.id = String.format("SC%03d", cnt++);
+     public Schedule(String id, String name) {
+        this.id = id;
         setName(name);
         this.subjects = new ArrayList<>();
         this.events = new ArrayList<>();

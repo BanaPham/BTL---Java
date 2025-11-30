@@ -1,16 +1,15 @@
 package code;
 import java.util.List;
+import java.sql.*;
 
 public class Subject {
 
     private String instructor, id, name;
     private List<Note> notes;
     private List<Assignment> assignments;
-    private static int cnt;
     // Subject
-    public Subject(String name, String instructors) {
-        cnt++;
-        this.id = String.format("SB%03d", cnt);
+    public Subject(String id, String name, String instructors) {
+        this.id = id;
         setName(name);
         setInstructor(instructors);
     }

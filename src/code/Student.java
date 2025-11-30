@@ -9,40 +9,14 @@ public class Student {
     private List<Subject> subjects;
     private List<Assignment> assignments;
     private List<Schedule> schedules;
-    private static int id = 1;
     // Định nghĩa quy tắc mật khẩu
     private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[!@#$%^&*])(?=\\S+$).{8,}$";
-    static {
-        Connection conn = DBConfig.getConnection();
-        if (conn != null) {
-            try {
-                // Lấy ra mã sinh viên lớn nhất hiện có (Sắp xếp giảm dần, lấy 1 cái đầu tiên)
-                String sql = "SELECT student_id FROM Student ORDER BY length(student_id) DESC, student_id DESC LIMIT 1";
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-
-                if (rs.next()) {
-                    String lastId = rs.getString("student_id"); 
-                    String numberPart = lastId.replaceAll("[^0-9]", ""); 
-                    
-                    if (!numberPart.isEmpty()) {
-                        // Gán id bằng số lớn nhất tìm được + 1
-                        id = Integer.parseInt(numberPart) + 1;
-                    }
-                }
-                // Nếu bảng chưa có dữ liệu thì id vẫn giữ nguyên là 1
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
     // Student
     public Student(String student_id, String name, String class_id, String email, String password) {
-        this.student_id = "ST" + String.format("%03d", id++);
+        this.student_id = student_id;
         setName(name);
         setClass_id(class_id);
         setEmail(email);
-        setPassword(password);
         setPassword(password);
         this.subjects = new ArrayList<>();
         this.assignments = new ArrayList<>();
