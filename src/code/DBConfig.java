@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class DBConfig {
     private static final String DB_NAME = "StudentDB"; 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME 
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/" + DB_NAME 
                                         + "?useSSL=false&allowPublicKeyRetrieval=true";
     
     private static final String USER = "root"; 

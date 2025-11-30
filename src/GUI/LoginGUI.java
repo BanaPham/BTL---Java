@@ -60,11 +60,11 @@ public class LoginGUI extends JFrame {
         btnLogin.setBackground(new Color(0, 102, 204));
         btnLogin.setForeground(Color.black);
         btnLogin.setFocusPainted(false);
-        btnLogin.setPreferredSize(new Dimension(90, 25));
+        btnLogin.setPreferredSize(new Dimension(100, 25));
 
         // Trang trí nút Đăng ký
         btnRegister.setBackground(new Color(240, 240, 240));
-        btnRegister.setPreferredSize(new Dimension(90, 25));
+        btnRegister.setPreferredSize(new Dimension(100, 25));
         bottomPanel.add(btnLogin);
         bottomPanel.add(btnRegister);
         add(bottomPanel, BorderLayout.SOUTH);
@@ -116,7 +116,7 @@ public class LoginGUI extends JFrame {
 
                         // --- MỞ MÀN HÌNH CHÍNH ---
                         // Nếu bạn đã có file AdminMainGUI, hãy bỏ dấu comment (//) ở dòng dưới đây:
-                        // new AdminMainGUI(studentId).setVisible(true);
+                        new ModernDashboardGUI(studentId).setVisible(true);
                         
                         this.dispose(); 
                     } else {

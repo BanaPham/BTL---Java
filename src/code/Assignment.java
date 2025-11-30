@@ -1,5 +1,6 @@
 package code;
 import java.util.Date;
+import java.sql.*;
 
 public class Assignment
 {
@@ -16,6 +17,25 @@ public class Assignment
         setRelatedSubject(related_subject);
         setDeadline(deadline);
         this.status = Status.CHUA_HOAN_THANH;
+    }
+
+    static {
+        try {
+            Connection conn = DBConfig.getConnection();
+            if (conn != null) {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT assignment_id FROM Assignment ORDER BY length(assignment_id) DESC, assignment_id DESC LIMIT 1");
+                if (rs.next()) {
+                    String lastId = rs.getString("assignment_id"); // Ví dụ "AS005"
+                    if (lastId != null && lastId.length() > 2) {
+                        int lastNum = Integer.parseInt(lastId.substring(2)); // Cắt bỏ "AS"
+                        cnt = lastNum + 1;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     // status 
     public enum Status {
